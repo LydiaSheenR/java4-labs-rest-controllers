@@ -55,7 +55,7 @@ public class CustomerController {
     @PutMapping("/api/customers/{id}")
     public ResponseEntity<?> saveCustomer(@PathVariable Long id, @RequestBody Customer newCustomer){
         Optional<Customer> existingCustomer = customerRepository.findById(id);
-        if (existingCustomer.isPresent()){
+        if (customerRepository.existsById(id)){
             customerRepository.save(newCustomer);
             return new ResponseEntity(HttpStatus.NO_CONTENT);
         }
