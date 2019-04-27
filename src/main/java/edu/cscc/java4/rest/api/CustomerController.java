@@ -47,8 +47,12 @@ public class CustomerController {
         return new ResponseEntity(HttpStatus.NOT_FOUND);
     }
     @PostMapping("/api/customers")
-    public ResponseEntity<?> createCustomer(@RequestBody Customer newCustomer, UriComponentsBuilder b){
+    public ResponseEntity<?> createCustomer(@RequestBody Customer newCustomer,  UriComponentsBuilder b){
         customerRepository.save(newCustomer);
+        Long id =1L;
+        newCustomer.setId(id);
+
+        System.out.println("*********new customer id: " + newCustomer.getId() + "*********");
         UriComponents uriComponents = b.path("/api/customers/{id}").buildAndExpand(newCustomer.getId());
         return ResponseEntity.created(uriComponents.toUri()).build();
     }
