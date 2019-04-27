@@ -92,7 +92,7 @@ public class CustomerControllerTests {
     this.mockMvc.perform(get(RESOURCE_URI + "/1")).andExpect(status().isNotFound());
   }
 
-/* ========== Uncomment one test at a time adding just enough code to get it to pass ========
+
   @Test
   public void deleteValidCustomerReturnsNoContent_Test () throws Exception {
     Customer testCustomer = new Customer(1L, "first", "last", "foo@bar.com");
@@ -109,7 +109,7 @@ public class CustomerControllerTests {
     verify(customerRepository, never()).delete(any(Customer.class));
   }
 
-
+/* ========== Uncomment one test at a time adding just enough code to get it to pass ========
   @Test
   public void postCreatesNewCustomer_Test () throws Exception {
     Customer testCustomer = new Customer(1L, "first", "last", null);

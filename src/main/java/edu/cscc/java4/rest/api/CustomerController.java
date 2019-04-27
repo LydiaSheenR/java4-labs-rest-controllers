@@ -4,10 +4,7 @@ import edu.cscc.java4.rest.data.CustomerRepository;
 import edu.cscc.java4.rest.domain.Customer;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.HashMap;
@@ -39,11 +36,16 @@ public class CustomerController {
         }
         return new ResponseEntity(HttpStatus.NOT_FOUND);
     }
-//
-//    public ResponseEntity deleteCustomer(Long){
-//        return null;
-//    }
-//
+    @DeleteMapping("/api/customers/{id}")
+    public ResponseEntity deleteCustomer(@PathVariable Long id){
+        Optional<Customer> customer = customerRepository.findById(id);
+        if (customer.isPresent()){
+            customerRepository.delete(customer.get());
+            return new ResponseEntity(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity(HttpStatus.NOT_FOUND);
+    }
+
 //    public ResponseEntity createCustomer(Customer, UriComponentsBuilder){
 //        return null;
 //    }
