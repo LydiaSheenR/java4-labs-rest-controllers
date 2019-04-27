@@ -109,7 +109,7 @@ public class CustomerControllerTests {
     verify(customerRepository, never()).delete(any(Customer.class));
   }
 
-/* ========== Uncomment one test at a time adding just enough code to get it to pass ========
+
   @Test
   public void postCreatesNewCustomer_Test () throws Exception {
     Customer testCustomer = new Customer(1L, "first", "last", null);
@@ -144,7 +144,6 @@ public class CustomerControllerTests {
     verify(customerRepository, never()).save(any(Customer.class));
   }
 
-   */
 
   private Collection<Customer> getMockCustomers (Customer... customerArgs) {
     HashMap<Long, Customer> customers = new HashMap<>();
