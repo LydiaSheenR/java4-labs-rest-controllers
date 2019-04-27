@@ -43,7 +43,7 @@ public class CustomerControllerTests {
     assertTrue(Class.forName("edu.cscc.java4.rest.data.CustomerRepository").isInterface());
   }
 
-  /* ========== Uncomment one test at a time adding just enough code to get it to pass ========
+
 
   @Test
   public void getAllCustomersWorksWithEmptyList_Test () throws Exception {
@@ -63,7 +63,6 @@ public class CustomerControllerTests {
       .andExpect(jsonPath("$.customers.length()").value(1))
       .andExpect(jsonPath("$.customers[0].lastName").value("l1"))
       .andExpect(jsonPath("$.customers[0].firstName").value("f1"));
-
     // Two customers:
     when(customerRepository.findAll()).thenReturn(getMockCustomers(
       new Customer(0L, "f1", "l1", "e1"),
@@ -75,6 +74,7 @@ public class CustomerControllerTests {
       .andExpect(jsonPath("$.customers[1].lastName").value("l2"))
       .andExpect(jsonPath("$.customers[1].firstName").value("f2"));
   }
+/* ========== Uncomment one test at a time adding just enough code to get it to pass ========
 
   @Test
   public void getValidCustomerByIdWorks_Test () throws Exception {
