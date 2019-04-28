@@ -49,7 +49,7 @@ public class CustomerController {
     @PostMapping("/api/customers")
     public ResponseEntity<?> createCustomer(@RequestBody Customer newCustomer,  UriComponentsBuilder b){
         customerRepository.save(newCustomer);
-        Long id =1L;
+        Long id =customerRepository.count() + 1;
         newCustomer.setId(id);
         UriComponents uriComponents = b.path("/api/customers/{id}").buildAndExpand(newCustomer.getId());
         return ResponseEntity.created(uriComponents.toUri()).build();
